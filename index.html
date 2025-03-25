@@ -53,22 +53,31 @@
                     <td align="center">
                       <h2 style="font-size: 14px; font-weight: 500; color: black; margin: 0; padding: 0;">
                         <span>Привет, </span>
-                        <span th:text="${recipientName} ?: 'Ошибка: пустое значение'">Ева</span><span>!</span>
+
+                        <!-- Provide username by Thymeleaf -->
+                        <span th:text="${recipientName} ?: 'Ошибка: пустое значение'"></span><span>!</span>
+
                       </h2>
                     </td>
                   </tr>
                   <tr>
                     <td align="center" style="padding-top: 8px;">
-                      <p style="font-size: 14px; font-weight: 500; color: black; margin: 0; padding: 0;" th:text="${resetText} ?: 'Кажется Вы забыли пароль от аккаунта Around. Если это так, давайте сбросим его'">
-                        Кажется Вы забыли пароль от аккаунта Around. <br> Если это так, давайте сбросим его
+                      <p style="font-size: 14px; font-weight: 500; color: black; margin: 0; padding: 0;">
+                        <span th:if="${isPasswordReset}">
+                            Кажется Вы забыли пароль от аккаунта Around. <br> Если это так, давайте сбросим его
+                        </span>
+                        <span th:if="${!isPasswordReset}">
+                            Вы зарегистрировались в Around. <br> Давайте подтвердим Вашу почту
+                        </span>
                       </p>
                     </td>
                   </tr>
                   <tr>
                     <td class="button" align="center" style="padding-top: 24px;">
-                      <a th:href="${resetLink} ?: '#'" style="display: inline-block; border-radius: 14px; background-color: #555EF6; text-decoration: none; font-size: 14px; color: white; padding: 18.5px 95.5px 15.5px 95.5px; margin: 0;" th:text="${buttonText} ?: 'Ошибка: пустое значение'">
-                        СБРОСИТЬ&nbsp;ПАРОЛЬ
-                      </a>
+
+                      <!-- Provide action link only by Thymeleaf-->
+                      <a th:href="${actionLink} ?: '#'" style="display: inline-block; border-radius: 14px; background-color: #555EF6; text-decoration: none; font-size: 14px; color: white; padding: 18.5px 95.5px 15.5px 95.5px; margin: 0;" th:text="${isPasswordReset ? 'СБРОСИТЬ&nbsp;ПАРОЛЬ' : 'ПОДТВЕРДИТЬ'}"></a>
+
                     </td>
                   </tr>
                 </table>
@@ -80,15 +89,20 @@
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
                   <tr>
                     <td align="center">
+
+                      <!-- Provide boolean value: isPasswordReset by Thymeleaf-->
                       <h2 style="font-size: 14px; font-weight: 400; color: black; margin: 0; padding: 0;">
-                        Если кнопка для <span th:text="${resetWord} ?: 'Ошибка: пустое значение'"></span> не работает, <br> перейдите по ссылке ниже:
+                        Если кнопка для <span th:text="${isPasswordReset ? 'сброса пароля' : 'подтверждения почты'}"></span> не работает, <br> перейдите по ссылке ниже:
                       </h2>
+
                     </td>
                   </tr>
                   <tr>
                     <td align="center" style="padding-top: 10px; font-weight: 400;">
-                      <a th:href="${resetLink} ?: '#'" style="display: inline-block; max-width: 333px; font-size: 10px; color: #555EF6; text-decoration: none; overflow-wrap: anywhere; margin: 0;" th:text="${resetLink} ?: 'Ошибка: пустое значение'">
-                        http://localhost:8080api/v1/auth/recovery/resetPassword?token=eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJyZWNvdmVyeSIsImp0aSI6Im1pa2VmaXhlbG9xcUBnbWFpbC5jb20iLCJpYXQiOjE3MTM0NDc4OTcsImV4cCI6MTcxMzU0Nzg5N30.AQZUIiInwcw4-vhqj1aX1lvgiVHS6nrAUgeSA9kDTLqDlCyGVEhOq7FhngE5RS1c
+
+                      <!-- Provide action link only by Thymeleaf-->
+                      <a th:href="${actionLink} ?: '#'" style="display: inline-block; max-width: 333px; font-size: 10px; color: #555EF6; text-decoration: none; overflow-wrap: anywhere; margin: 0;" th:text="${actionLink} ?: 'Ошибка: пустое значение'">
+
                       </a>
                     </td>
                   </tr>
