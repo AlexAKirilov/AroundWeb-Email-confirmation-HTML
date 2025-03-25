@@ -1,117 +1,118 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Around Email</title>
-    <style>
-        /* custom styles */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Around Email</title>
+  <style>
+    html {
+      box-sizing: border-box;
+      height: 100%;
+    }
 
-        html {
-            box-sizing: border-box;
-            height: 100%;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: inherit;
-            /* outline: 1px solid red; */
-        }
-    </style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit;
+    }
+  </style>
 </head>
 
-<body style="height: inherit; width: inherit; font-family: Helvetica, Arial, sans-serif; font-weight: 600; font-style: normal; text-align: center;">
+<body style="height: inherit; width: inherit; min-width: 360px; padding: 0 1px; box-sizing: border-box; font-family: Helvetica, Arial, sans-serif; font-weight: 600; font-style: normal; text-align: center;">
 
-    <table role="presentation" align="center" width="inherit" cellpadding="0" cellspacing="0" style="background-color: transparent; height: inherit;">
-        <tr>
-            <td align="center" style="width: 100%;">
-                <!-- Основной контейнер -->
-                <table class="content" role="presentation" cellpadding="0" cellspacing="0" style="background-color: white; border-radius: 59px; margin-bottom: 44px; max-width: 770px;">
-                    <tr>
-                        <td class="header" align="center" style="padding: 42px 37px;">
-                            <!-- Шапка -->
-                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td align="center">
-                                        <a href="#" style="display: inline-block; margin: 0; text-decoration: none; color: inherit;">
-                                            <img class="header-logo" src="https://github.com/AlexAKirilov/AroundStatic/blob/main/Around%20Logo%20Transparent.png?raw=true" alt="Логотип приложения Around" style="width: 100%; max-height: inherit; margin: 0; padding: 0;">
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <h1 style="font-size: 39px; font-weight: 600; line-height: 39px; margin: 0; padding: 0; color: black;">Around</h1>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center" style="padding: 0 37px;">
-                            <!-- Основной контент -->
-                            <table role="presentation" width="inherit" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td align="center">
-                                        <h2 style="font-size: 14px; font-weight: 600; margin: 0; padding: 0; color: black;">
-                                            <span>Привет, </span>
-                                            <span th:text="${recipientName} ?: 'Ошибка: пустое значение'">Ева</span><span>!</span>
-                                        </h2>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center" style="padding-top: 16px;">
-                                        <p style="font-size: 14px; margin: 0; padding: 0; color: black;" th:text="${resetText} ?: 'Кажется Вы забыли пароль от аккаунта Around. Если это так, давайте сбросим его'">Кажется Вы забыли пароль от аккаунта Around. 
-                                            Если это так, давайте сбросим его</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="button" align="center" style="padding-top: 36px;">
-                                        <a th:href="${resetLink} ?: '#'" style="display: inline-block; margin: 0; padding: 18.5px 95.5px 15.5px 95.5px; border-radius: 14px; font-size: 14px; background-color: #555EF6; text-decoration: none; color: white;" th:text="${buttonText} ?: 'Ошибка: пустое значение'">
-                                                СБРОСИТЬ&nbsp;ПАРОЛЬ
-                                        </a>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center" style="padding: 36px 37px 42px 37px;">
-                            <!-- Альтернативный контент -->
-                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td align="center">
-                                        <h2 style="font-size: 14px; font-weight: 600; margin: 0; padding: 0; color: black;">
-                                            Если кнопка для <span th:text="${resetWord} ?: 'Ошибка: пустое значение'"></span> не работает, перейдите по ссылке ниже:
-                                        </h2>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center" style="padding-top: 10px; font-weight: 400;">
-                                        <a th:href="${resetLink} ?: '#'" style="display: inline-block; margin: 0; font-size: 8px; color: #555EF6; text-decoration: none; overflow-wrap: anywhere;" th:text="${resetLink} ?: 'Ошибка: пустое значение'">http://localhost:8080api/v1/auth/recovery/resetPassword?token=eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJyZWNvdmVyeSIsImp0aSI6Im1pa2VmaXhlbG9xcUBnbWFpbC5jb20iLCJpYXQiOjE3MTM0NDc4OTcsImV4cCI6MTcxMzU0Nzg5N30.AQZUIiInwcw4-vhqj1aX1lvgiVHS6nrAUgeSA9kDTLqDlCyGVEhOq7FhngE5RS1c</a>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
+  <table role="presentation" align="center" width="inherit" cellpadding="0" cellspacing="0" style="box-sizing: border-box; background-color: transparent; height: inherit;">
+    <tr>
+      <td align="center" style="width: 100%; box-sizing: border-box;">
+        <!-- Main Containter -->
+        <div style="width: 100%;">
+          <table class="content" role="presentation" cellpadding="0" cellspacing="0" style="width: 99%; max-width: 770px; box-sizing: border-box; background-color: white; border-radius: 59px; border: 1px solid #BDBDBD;">
+            <tr>
+              <td class="header" align="center" style="padding: 42px 37px 0 37px;">
+                <!-- Header -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td align="center">
+                      <a href="#" style="display: inline-block; text-decoration: none; color: inherit; margin: 0;">
+                        <img class="header-logo" src="https://github.com/AlexAKirilov/AroundStatic/blob/main/Around%20Logo%20Transparent.png?raw=true" alt="Логотип приложения Around" style="width: 100%; max-height: inherit; padding: 0; margin: 0;">
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="center">
+                      <h1 style="font-size: 50px; font-weight: 400; line-height: 39px; color: black; margin: 0; padding: 0;">Around</h1>
+                    </td>
+                  </tr>
                 </table>
-                <!-- Футер -->
-                <table role="presentation" cellpadding="0" cellspacing="0" style="width: 90%; max-width: 770px; font-weight: 400; font-size: 11px;">
-                    <tr>
-                        <td align="center">
-                            <p style="color: #958D8D; margin: 0; padding: 0;">Если вы не совершали никаких действий, проигнорируйте&nbsp;данное&nbsp;сообщение.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            <p style="color: #958D8D; margin: 0; padding: 0;">С уважением, команда Around.</p>
-                        </td>
-                    </tr>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" style="padding-top: 24px;">
+                <!-- Main content -->
+                <table role="presentation" width="inherit" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td align="center">
+                      <h2 style="font-size: 14px; font-weight: 500; color: black; margin: 0; padding: 0;">
+                        <span>Привет, </span>
+                        <span th:text="${recipientName} ?: 'Ошибка: пустое значение'">Ева</span><span>!</span>
+                      </h2>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="center" style="padding-top: 8px;">
+                      <p style="font-size: 14px; font-weight: 500; color: black; margin: 0; padding: 0;" th:text="${resetText} ?: 'Кажется Вы забыли пароль от аккаунта Around. Если это так, давайте сбросим его'">
+                        Кажется Вы забыли пароль от аккаунта Around. <br> Если это так, давайте сбросим его
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="button" align="center" style="padding-top: 24px;">
+                      <a th:href="${resetLink} ?: '#'" style="display: inline-block; border-radius: 14px; background-color: #555EF6; text-decoration: none; font-size: 14px; color: white; padding: 18.5px 95.5px 15.5px 95.5px; margin: 0;" th:text="${buttonText} ?: 'Ошибка: пустое значение'">
+                        СБРОСИТЬ&nbsp;ПАРОЛЬ
+                      </a>
+                    </td>
+                  </tr>
                 </table>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" style="padding: 30px 24px 44px 30px;">
+                <!-- Альтернативный контент -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td align="center">
+                      <h2 style="font-size: 14px; font-weight: 400; color: black; margin: 0; padding: 0;">
+                        Если кнопка для <span th:text="${resetWord} ?: 'Ошибка: пустое значение'"></span> не работает, <br> перейдите по ссылке ниже:
+                      </h2>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="center" style="padding-top: 10px; font-weight: 400;">
+                      <a th:href="${resetLink} ?: '#'" style="display: inline-block; max-width: 333px; font-size: 10px; color: #555EF6; text-decoration: none; overflow-wrap: anywhere; margin: 0;" th:text="${resetLink} ?: 'Ошибка: пустое значение'">
+                        http://localhost:8080api/v1/auth/recovery/resetPassword?token=eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJyZWNvdmVyeSIsImp0aSI6Im1pa2VmaXhlbG9xcUBnbWFpbC5jb20iLCJpYXQiOjE3MTM0NDc4OTcsImV4cCI6MTcxMzU0Nzg5N30.AQZUIiInwcw4-vhqj1aX1lvgiVHS6nrAUgeSA9kDTLqDlCyGVEhOq7FhngE5RS1c
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!-- Footer -->
+        <table role="presentation" cellpadding="0" cellspacing="0" style="width: 90%; max-width: 770px; margin-top: 37px; font-size: 11px; font-weight: 400;">
+          <tr>
+            <td align="center">
+              <p style="color: #958D8D; margin: 0; padding: 0;">Если вы не совершали никаких действий,<br>проигнорируйте&nbsp;данное&nbsp;сообщение.</p>
             </td>
-        </tr>
-    </table>
-    
+          </tr>
+          <tr>
+            <td align="center">
+              <p style="color: #958D8D; margin: 0; margin-top: 8px; padding: 0;">С уважением, команда Around.</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
 </body>
 </html>
-
