@@ -1,478 +1,132 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>reset_password</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <style>
-        /* normalize */
-        html {
-            line-height: 1.15;
-            -webkit-text-size-adjust: 100%;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Around Email</title>
+  <style>
+    html {
+      box-sizing: border-box;
+      height: 100%;
+    }
 
-        body {
-            /* margin: 0; */
-        }
-
-        main {
-            display: block;
-        }
-        
-        h1 {
-            font-size: 2em;
-            margin: .67em 0;
-        }
-        
-        hr {
-            box-sizing: content-box;
-            height: 0;
-            overflow: visible
-        }
-        
-        pre {
-            font-family: monospace,monospace;
-            font-size:1em;
-        }
-        
-        a {
-            background-color:transparent;
-        }
-        
-        abbr[title] {
-            border-bottom: none;
-            text-decoration: underline;
-            text-decoration: underline dotted;
-        }
-        
-        b, strong {
-            font-weight:bolder;
-        }
-        
-        code, kbd, samp {
-            font-family:monospace,monospace;
-            font-size:1em
-        }
-        
-        small {
-            font-size:80%;
-        }
-        
-        sub, sup {
-            font-size: 75%;
-            line-height: 0;
-            position: relative;
-            vertical-align:baseline;
-        }
-        
-        sub {
-            bottom: -.25em;
-        }
-        
-        sup {
-            top: -.5em;
-        }
-        
-        img {
-            border-style: none;
-        }
-        
-        button, input, optgroup, select, textarea {
-            font-family: inherit;
-            font-size: 100%;
-            line-height: 1.15;
-            margin: 0;
-        }
-        
-        button, input {
-            overflow: visible;
-        }
-        
-        button, select {
-            text-transform: none;
-        }
-        
-        [type=button], [type=reset], [type=submit], button{
-            -webkit-appearance: button;
-        }
-        
-        [type=button]::-moz-focus-inner, [type=reset]::-moz-focus-inner, [type=submit]::-moz-focus-inner,button::-moz-focus-inner {
-            border-style:none;
-            padding:0;
-        }
-        
-        [type=button]:-moz-focusring, [type=reset]:-moz-focusring, [type=submit]:-moz-focusring, button:-moz-focusring {
-            outline: 1px dotted ButtonText;
-        }
-        
-        fieldset {
-            padding:.35em .75em .625em;
-        }
-        
-        legend {
-            box-sizing: border-box;
-            color: inherit;
-            display: table;
-            max-width: 100%;
-            padding: 0;
-            white-space: normal;
-        }
-        
-        progress {
-            vertical-align:baseline;
-        }
-        
-        textarea {
-            overflow:auto;
-        }
-        
-        [type=checkbox], [type=radio] {
-            box-sizing: border-box;
-            padding:0;
-        }
-        
-        [type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button {
-            height:auto;
-        }
-        
-        [type=search] {
-            -webkit-appearance: textfield;
-            outline-offset:-2px;
-        }
-        
-        [type=search]::-webkit-search-decoration {
-            -webkit-appearance:none;
-        }
-        
-        ::-webkit-file-upload-button {
-            -webkit-appearance: button;
-            font:inherit;
-        }
-        
-        details {
-            display: block;
-        }
-        
-        summary {
-            display:list-item;
-        }
-        
-        template {
-            display:none;
-        }
-        
-        [hidden] { 
-            display:none;
-        }
-
-        /* custom styles */
-
-        @font-face {
-            font-family: 'Involve';
-            src: url('https://github.com/AlexAKirilov/AroundStatic/raw/refs/heads/main/Involve-SemiBold.ttf') format('truetype');
-            font-weight: 600;
-            font-style: normal;
-        }
-
-        html {
-            box-sizing: border-box;
-            height: 100%;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: inherit;
-            /* outline: 1px solid red; */
-        }
-
-        a {
-            display: inline-block;
-            margin: 0;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        p {
-            margin: 0;
-            padding: 0;
-        }
-
-        img {
-            margin: 0;
-            padding: 0;
-            /* max-width: 100%; */
-        }
-
-        /* :root { */
-            /* --header-font-size: 64px; */
-            /* --main-font-size: 20px; */
-            /* --button-font-size: 14px; */
-            /* --link-font-size: 14px; */
-            /* --footer-font-size: 19px; */
-
-        /* } */
-
-        body {
-            /* padding: 74px 9px; */
-            /* background-color: #E8E8E8; */
-            /* font-family: 'Montserrat', serif; */
-            font-family: 'Involve', Arial, Helvetica, sans-serif;
-            font-weight: 600;
-            font-style: normal;
-            font-display: swap;
-            text-align: center;
-        }
-
-        h1 {
-            margin: 0;
-            padding: 0;
-        }
-
-        h2 {
-            margin: 0;
-            padding: 0;
-            font-size: inherit;
-            font-weight: inherit;
-        }
-
-        .main {
-            align-items: center;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-size: 0;
-        }
-
-        .content-container, .footer-text, .alt-content {
-            align-items: center;
-            font-family: 'Involve';
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .main-content-title {
-            margin-bottom: 16px;
-            font-size: 0px;
-        }
-
-        .main-content-title span {
-            margin-bottom: 16px;
-            font-size: 14px;
-        }
-
-        .main-content-text-text {
-            margin-bottom: 36px;
-        }
-
-        .alt-content {
-            max-width: inherit;
-            gap: 10px;
-        }
-
-        .content-container {
-            margin-bottom: 44px;
-            max-width: 770px;
-            border-radius: 59px;
-            gap: 36px;
-        }
-
-        .link-container {
-            width: inherit;
-        }
-
-        /* .main-content {
-            text-align: center;
-        } */
-
-        .content-container {
-            padding: 42px 37px;
-            background-color: transparent; 
-            /* was white */
-        }
-
-        .header-container {
-            gap: 10px;
-        }
-
-        .header-logo {
-            /* display: block; */
-            /* margin-bottom: 20px; */
-            /* max-width: 20pc; */
-            max-height: inherit;
-            width: 52%;
-        }
-
-        .header-name {
-            font-size: 39px;
-            font-weight: 600;
-            line-height: 39px;
-        }
-
-        .footer-text {
-            margin: 0;
-            padding: 0;
-            font-size: 11px;
-            color: #958D8D;
-        }
-
-        /* .link-container {
-            display: block;
-            padding: inherit;
-        } */
-
-        .link {
-            /* text-align: center; */
-            /* display: block; */
-            font-size: 8px;
-            width: inherit;
-            overflow-wrap: anywhere;
-            color: #555EF6; 
-        }
-
-        .main-content-button {
-            display: inline-block;
-            padding: 18.5px 95.5px 15.5px 95.5px;
-            border-radius: 14px;
-            color: white;
-            font-size: 14px;
-            background-color: #555EF6;
-        }
-
-        /* mobile version */
-
-        @media (max-width: 610px) {
-
-            .main {
-                padding: 9px;
-            }
-
-            :root {
-                /* --header-font-size: 39px; */
-                /* --main-font-size: 14px; */
-                /* --button-font-size: 14px;  */
-                /* --link-font-size: 8px; */
-                /* --footer-font-size: 11px; */
-            }
-
-            .content-container {
-                max-width: 450px;
-                gap: 24px;
-            }
-
-            .header-logo {
-                width: 60%;
-            }
-
-            .footer-container {
-                max-width: 350px;
-            }
-            
-            .header-logo {
-                width: 40% !important;
-            }
-
-            .header {
-                padding: 21px 19px !important;
-            }
-        }
-    </style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit;
+    }
+  </style>
 </head>
 
-<!-- background-color: #E8E8E8 -->
+<body style="height: inherit; width: inherit; min-width: 360px; padding: 0 1px; box-sizing: border-box; font-family: Helvetica, Arial, sans-serif; font-weight: 600; font-style: normal; text-align: center;">
 
-<body style="height: inherit; width: inherit;">
+  <table role="presentation" align="center" width="inherit" cellpadding="0" cellspacing="0" style="box-sizing: border-box; background-color: transparent; height: inherit;">
+    <tr>
+      <td align="center" style="width: 100%; box-sizing: border-box;">
+        <!-- Main Containter -->
+        <div style="width: 100%;">
+          <table class="content" role="presentation" cellpadding="0" cellspacing="0" style="width: 99%; max-width: 770px; box-sizing: border-box; background-color: white; border-radius: 59px; border: 1px solid #BDBDBD;">
+            <tr>
+              <td class="header" align="center" style="padding: 42px 37px 0 37px;">
+                <!-- Header -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td align="center">
+                      <a href="#" style="display: inline-block; text-decoration: none; color: inherit; margin: 0;">
+                        <img class="header-logo" src="https://github.com/AlexAKirilov/AroundStatic/blob/main/Around%20Logo%20Transparent.png?raw=true" alt="Логотип приложения Around" style="width: 100%; max-height: inherit; padding: 0; margin: 0;">
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="center">
+                      <h1 style="font-size: 50px; font-weight: 400; line-height: 39px; color: black; margin: 0; padding: 0;">Around</h1>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" style="padding-top: 24px;">
+                <!-- Main content -->
+                <table role="presentation" width="inherit" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td align="center">
+                      <h2 style="font-size: 14px; font-weight: 500; color: black; margin: 0; padding: 0;">
+                        <span>Привет, </span>
 
-    <table role="presentation" align="center" width="inherit" cellpadding="0" cellspacing="0" style="background-color: transparent; height: inherit;">
-        <tr>
-            <td align="center" style="width: 100%;">
-                <!-- Основной контейнер -->
-                <table class="content" role="presentation" cellpadding="0" cellspacing="0" style="background-color: white; border-radius: 59px; margin-bottom: 44px; max-width: 770px;">
-                    <tr>
-                        <td class="header" align="center" style="padding: 42px 37px;">
-                            <!-- Шапка -->
-                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td align="center">
-                                        <a href="#">
-                                            <img class="header-logo" src="https://github.com/AlexAKirilov/AroundStatic/blob/main/Around%20Logo%20Transparent.png?raw=true" alt="Логотип приложения Around" style="width: 150%; max-height: inherit;">
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center">
-                                        <h1 style="font-size: 39px; font-weight: 600; line-height: 39px; margin: 0; padding: 0;">Around</h1>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center" style="padding: 0 37px;">
-                            <!-- Основной контент -->
-                            <table role="presentation" width="inherit" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td align="center">
-                                        <h2 style="font-size: 14px; font-weight: 600; margin: 0; padding: 0;">
-                                            <span>Привет, </span>
-                                            <span th:text="${recipientName} ?: 'Ошибка: пустое значение'">Ева</span><span>!</span>
-                                        </h2>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center" style="padding-top: 16px;">
-                                        <p style="font-size: 14px; margin: 0; padding: 0;" th:text="${resetText} ?: 'Кажется Вы забыли пароль от аккаунта Around. Если это так, давайте сбросим его'">Кажется Вы забыли пароль от аккаунта Around. 
-                                            Если это так, давайте сбросим его</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="button" align="center" style="padding-top: 36px;">
-                                        <a th:href="${resetLink} ?: '#'" style="display: inline-block; padding: 18.5px 95.5px 15.5px 95.5px; border-radius: 14px; color: white; font-size: 14px; background-color: #555EF6; text-decoration: none;" th:text="${buttonText} ?: 'Ошибка: пустое значение'">СБРОСИТЬ&nbsp;ПАРОЛЬ</a>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center" style="padding: 36px 37px 42px 37px;">
-                            <!-- Альтернативный контент -->
-                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td align="center">
-                                        <h2 style="font-size: 14px; font-weight: 600; margin: 0; padding: 0;">
-                                            Если кнопка для <span th:text="${resetWord} ?: 'Ошибка: пустое значение'"></span> не работает, перейдите по ссылке ниже:
-                                        </h2>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center" style="padding-top: 10px; font-weight: 400;">
-                                        <a th:href="${resetLink} ?: '#'" style="font-size: 8px; color: #555EF6; text-decoration: none; overflow-wrap: anywhere;" th:text="${resetLink} ?: 'Ошибка: пустое значение'">http://localhost:8080api/v1/auth/recovery/resetPassword?token=eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJyZWNvdmVyeSIsImp0aSI6Im1pa2VmaXhlbG9xcUBnbWFpbC5jb20iLCJpYXQiOjE3MTM0NDc4OTcsImV4cCI6MTcxMzU0Nzg5N30.AQZUIiInwcw4-vhqj1aX1lvgiVHS6nrAUgeSA9kDTLqDlCyGVEhOq7FhngE5RS1c</a>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
+                        <!-- Provide username by Thymeleaf -->
+                        <span th:text="${recipientName} ?: 'Ошибка: пустое значение'"></span><span>!</span>
+
+                      </h2>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="center" style="padding-top: 8px;">
+                      <p style="font-size: 14px; font-weight: 500; color: black; margin: 0; padding: 0;">
+                        <span th:if="${isPasswordReset}">
+                            Кажется Вы забыли пароль от аккаунта Around. <br> Если это так, давайте сбросим его
+                        </span>
+                        <span th:if="${!isPasswordReset}">
+                            Вы зарегистрировались в Around. <br> Давайте подтвердим Вашу почту
+                        </span>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="button" align="center" style="padding-top: 24px;">
+
+                      <!-- Provide action link only by Thymeleaf-->
+                      <a th:href="${actionLink} ?: '#'" style="display: inline-block; border-radius: 14px; background-color: #555EF6; text-decoration: none; font-size: 14px; color: white; padding: 18.5px 95.5px 15.5px 95.5px; margin: 0;" th:text="${isPasswordReset ? 'СБРОСИТЬ&nbsp;ПАРОЛЬ' : 'ПОДТВЕРДИТЬ'}"></a>
+
+                    </td>
+                  </tr>
                 </table>
-                <!-- Футер -->
-                <table role="presentation" cellpadding="0" cellspacing="0" style="width: 90%; max-width: 770px; font-weight: 400; font-size: 11px;">
-                    <tr>
-                        <td align="center">
-                            <p style="color: #958D8D; margin: 0; padding: 0;">Если вы не совершали никаких действий, проигнорируйте&nbsp;данное&nbsp;сообщение.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center">
-                            <p style="color: #958D8D; margin: 0; padding: 0;">С уважением, команда Around.</p>
-                        </td>
-                    </tr>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" style="padding: 30px 24px 44px 30px;">
+                <!-- Альтернативный контент -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td align="center">
+
+                      <!-- Provide boolean value: isPasswordReset by Thymeleaf-->
+                      <h2 style="font-size: 14px; font-weight: 400; color: black; margin: 0; padding: 0;">
+                        Если кнопка для <span th:text="${isPasswordReset ? 'сброса пароля' : 'подтверждения почты'}"></span> не работает, <br> перейдите по ссылке ниже:
+                      </h2>
+
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="center" style="padding-top: 10px; font-weight: 400;">
+
+                      <!-- Provide action link only by Thymeleaf-->
+                      <a th:href="${actionLink} ?: '#'" style="display: inline-block; max-width: 333px; font-size: 10px; color: #555EF6; text-decoration: none; overflow-wrap: anywhere; margin: 0;" th:text="${actionLink} ?: 'Ошибка: пустое значение'">
+
+                      </a>
+                    </td>
+                  </tr>
                 </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!-- Footer -->
+        <table role="presentation" cellpadding="0" cellspacing="0" style="width: 90%; max-width: 770px; margin-top: 37px; font-size: 11px; font-weight: 400;">
+          <tr>
+            <td align="center">
+              <p style="color: #958D8D; margin: 0; padding: 0;">Если вы не совершали никаких действий,<br>проигнорируйте&nbsp;данное&nbsp;сообщение.</p>
             </td>
-        </tr>
-    </table>
-    
+          </tr>
+          <tr>
+            <td align="center">
+              <p style="color: #958D8D; margin: 0; margin-top: 8px; padding: 0;">С уважением, команда Around.</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
 </body>
 </html>
-
